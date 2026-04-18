@@ -1,0 +1,102 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "T-Shirt",
+            "price": 500,
+            "category": "Clothing",
+            "brand": "Urban Style",
+            "size": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "color": [
+                "Black",
+                "White",
+                "Blue"
+            ],
+            "stock": 120,
+            "rating": 4.5,
+            "description": "Comfortable cotton t-shirt perfect for daily wear.",
+            "image": "/images/tshirt.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Jeans",
+            "price": 1200,
+            "category": "Clothing",
+            "brand": "Denim Pro",
+            "size": [
+                "30",
+                "32",
+                "34",
+                "36"
+            ],
+            "color": [
+                "Blue",
+                "Black"
+            ],
+            "stock": 80,
+            "rating": 4.3,
+            "description": "Slim fit stylish jeans for casual and party wear.",
+            "image": "/images/jeans.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Shoes",
+            "price": 2000,
+            "category": "Footwear",
+            "brand": "WalkMate",
+            "size": [
+                "40",
+                "41",
+                "42",
+                "43",
+                "44"
+            ],
+            "color": [
+                "Black",
+                "Brown",
+                "White"
+            ],
+            "stock": 50,
+            "rating": 4.7,
+            "description": "Durable and comfortable shoes for long time use.",
+            "image": "/images/shoes.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Watch",
+            "price": 1500,
+            "category": "Accessories",
+            "brand": "TimeX",
+            "color": [
+                "Black",
+                "Silver",
+                "Gold"
+            ],
+            "stock": 40,
+            "rating": 4.2,
+            "description": "Stylish wrist watch with premium look.",
+            "image": "/images/watch.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Bag",
+            "price": 800,
+            "category": "Accessories",
+            "brand": "CarryGo",
+            "color": [
+                "Black",
+                "Grey",
+                "Blue"
+            ],
+            "stock": 70,
+            "rating": 4.4,
+            "description": "Lightweight and durable backpack for daily use.",
+            "image": "/images/bag.jpg"
+        }
+    ]
+}
