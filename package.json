@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "daisyui": "^5.5.19"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15"
   }
 }
