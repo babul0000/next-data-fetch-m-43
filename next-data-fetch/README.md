@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🚀 1️⃣ SSR (Server Side Rendering)
+🧠 কী?
 
-## Getting Started
+প্রতিবার request আসলে server নতুন করে page বানায়।
 
-First, run the development server:
+💻 Example:
+const res = await fetch(url, { cache: "no-store" });
+🎯 কেন ব্যবহার করি?
+সবসময় fresh data দরকার হলে
+user-specific data (login, dashboard)
+📍 কোথায় use হয়?
+Dashboard
+Profile page
+Live data system
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+👉 Example: Facebook feed
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+⚡ 2️⃣ CSR (Client Side Rendering)
+🧠 কী?
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Browser (client) এ data load হয়।
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+💻 Example:
+useEffect(() => {
+  fetch("/api/data")
+    .then(res => res.json())
+    .then(data => setData(data));
+}, []);
+🎯 কেন ব্যবহার করি?
+page load পরে data আনতে
+interactive UI এর জন্য
+📍 কোথায় use হয়?
+React apps
+Dashboard widgets
+Search results
 
-## Learn More
+👉 Example: YouTube comments load
 
-To learn more about Next.js, take a look at the following resources:
+⚡ 3️⃣ SSG (Static Site Generation)
+🧠 কী?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Build time এ page তৈরি হয়ে যায়।
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+💻 Example:
+const res = await fetch(url, {
+  cache: "force-cache"
+});
+🎯 কেন ব্যবহার করি?
+fastest performance
+SEO friendly
+📍 কোথায় use হয়?
+Blog
+Product list
+Marketing site
 
-## Deploy on Vercel
+👉 Example: News article (rarely changes)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🔄 4️⃣ ISR (Incremental Static Regeneration)
+🧠 কী?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+SSG + update system
+
+💻 Example:
+fetch(url, {
+  next: { revalidate: 10 }
+});
+🎯 কেন ব্যবহার করি?
+static speed + dynamic update
+📍 কোথায় use হয়?
+E-commerce products
+News websites
+
+👉 Example:
+Product price update every 10 sec
+
+🧩 5️⃣ generateStaticParams()
+🧠 কী?
+
+Dynamic routes build time এ আগে থেকে generate করে।
+
+💻 Example:
+export async function generateStaticParams() {
+  const res = await fetch("http://localhost:5000/products");
+  const data = await res.json();
+
+  return data.map((item) => ({
+    itemId: item.id.toString(),
+  }));
+}
+🎯 কেন ব্যবহার করি?
+dynamic page fast করতে
+SEO improve করতে
+📍 কোথায় use হয়?
+/products/[id]
+/blog/[slug]
+
+👉 Example:
+আগে থেকেই /product/1, /product/2 বানিয়ে রাখা
+
+🧠 সহজ করে মনে রাখো:
+Concept	কেন ব্যবহার করি
+SSR	সবসময় fresh data
+CSR	client side interactive UI
+SSG	fastest static page
+ISR	static + auto update
+generateStaticParams	dynamic route pre-build
+🎯 Real Example (তোমার প্রজেক্ট অনুযায়ী)
+
+👉 তুমি যে project বানিয়েছো:
+
+/products → SSG / ISR (product list)
+/products/[id] → generateStaticParams + SSR
+Navbar / UI → CSR (React side)
+🔥 One Line Summary:
+
+👉 SSR = সবসময় fresh
+👉 CSR = browser handle করে
+👉 SSG = build time fast page
+👉 ISR = মাঝে মাঝে update
+👉 generateStaticParams = dynamic route আগে থেকে বানানো

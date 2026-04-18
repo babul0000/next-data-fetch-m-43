@@ -1,4 +1,8 @@
-
+export const generateStaticParams = async() => {
+    const res = await fetch(`http://localhost:5000/products/${itemId}`)
+    const data =await res.json()
+    return data.map(book => ({itemId: book.id}))
+}
 
 const DaynamicId = async({params}) => {
     const { itemId} = await params;
